@@ -1,7 +1,6 @@
-if(process.env.ENV){
-  equire('dotenv').load();
+if(!process.env.ENV){
+  require('dotenv').load();
 } 
-
 //  OpenShift sample Node application
 var express = require('express'),
     app     = express(),
@@ -11,6 +10,7 @@ Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
+app.use(express.static('public'));
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
@@ -99,7 +99,10 @@ app.get('/meonuoicon', function (req, res) {
       res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
     });
   } else {
-    res.send("tagGen('Real Tag Cloud')");
+    //res.send("tagGen('Real Tag Cloud')");
+
+    res.render('widget.html', {});
+    
   
   }
 });
