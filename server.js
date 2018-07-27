@@ -1,3 +1,7 @@
+if(process.env.ENV){
+  equire('dotenv').load();
+} 
+
 //  OpenShift sample Node application
 var express = require('express'),
     app     = express(),
@@ -85,6 +89,7 @@ app.get('/meonuoicon', function (req, res) {
   }
   if (false) {
     var col = db.collection('counts');
+    var col1 = db.collection('tags');
     // Create a document with request IP and current time of request
     col.insert({ip: req.ip, date: Date.now()});
     col.count(function(err, count){
@@ -94,7 +99,7 @@ app.get('/meonuoicon', function (req, res) {
       res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
     });
   } else {
-    res.render('widget.html');
+    res.send('Real Tag Cloud');
   
   }
 });
