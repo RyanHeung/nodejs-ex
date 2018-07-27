@@ -99,7 +99,7 @@ app.get('/meonuoicon', function (req, res) {
       res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
     });
   } else {
-    res.send('Real Tag Cloud');
+    res.send("tagGen('Real Tag Cloud')");
   
   }
 });
