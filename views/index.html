@@ -210,7 +210,7 @@ pre {
 }
 
 </style>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 <body>
 
@@ -218,7 +218,16 @@ pre {
           <hgroup>
             <h1>Welcome to your Node.js application on OpenShift</h1>
           </hgroup>
-
+        <div class="row"> 
+            <div id="xingWeiWidget">Tagcloud</div>
+            <script> 
+            $('head').append( $('<link rel="stylesheet" type="text/css"/>').attr('href', 'http://babiwidget.learnxyz.net/mdc.chips.min.css'));
+              function tagGen(results) { 
+                $("#xingWeiWidget").html(results);
+              }
+            </script>
+            <script src="http://babiwidget.learnxyz.net/meonuoicon.js"></script>
+        </div>
 
         <div class="row">
           <section class='col-xs-12 col-sm-6 col-md-6'>

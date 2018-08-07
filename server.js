@@ -5,7 +5,8 @@ if(!process.env.ENV){
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
-    
+    $       = require('jquery');
+
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
@@ -101,9 +102,7 @@ app.get('/meonuoicon', function (req, res) {
   } else {
     //res.send("tagGen('Real Tag Cloud')");
 
-    res.render('widget.html', {});
-    
-  
+    res.render('widget.js', {});
   }
 });
 
