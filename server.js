@@ -94,14 +94,14 @@ app.get('/meonuoicon', function (req, res) {
         if(err) throw err;
         var temp = '';
         docs.forEach(function (doc) {
-          temp +='<a href=\'' + doc['Link'] + '\'>' + doc['Tag'] + '</a> ';
+          temp +='<div class=\'mdc-chip\'><a href=\'' + doc['Link'] + '\'>' + doc['Tag'] + '</a></div> ';
         });
-        res.send('tagGen("' + temp + '")');
+        res.send('tagGen("<div class=\'md-chips\'>' + temp + '</div>")');
     });   
   } 
   else {
     //res.send('meonuoicon.html', {});
-  }
+  } 
 });
 
 app.get('/pagecount', function (req, res) {
