@@ -87,22 +87,20 @@ app.get('/meonuoicon', function (req, res) {
   // initialized.
   if (!db) {
     initDb(function(err){});
-  }
-  if (false) {
-    var col = db.collection('counts');
-    var col1 = db.collection('tags');
-    // Create a document with request IP and current time of request
-    col.insert({ip: req.ip, date: Date.now()});
-    col.count(function(err, count){
-      if (err) {
-        console.log('Error running count. Message:\n'+err);
-      }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
-    });
-  } else {
-    //res.send("tagGen('Real Tag Cloud')");
-
-    res.render('widget.js', {});
+  } 
+  if (db) {
+    var col = db.collection('tags'); 
+    col.find({Site : 'meonuoicon'}).toArray(function (err, docs){
+        if(err) throw err;
+        var temp = '';
+        docs.forEach(function (doc) {
+          temp +='<a href=\'' + doc['Link'] + '\'>' + doc['Tag'] + '</a> ';
+        });
+        res.send('tagGen("' + temp + '")');
+    });   
+  } 
+  else {
+    //res.send('meonuoicon.html', {});
   }
 });
 
