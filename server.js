@@ -94,7 +94,7 @@ app.get('/meonuoicon', function (req, res) {
         if(err) throw err;
         var temp = '';
         docs.forEach(function (doc) {
-          temp +='<div class=\'mdc-chip\'><a href=\'' + doc['Link'] + '\'>' + doc['Tag'] + '</a></div> ';
+          temp +='<div class=\'mdc-chip\' style=\'margin-bottom:5px;\'><a href=\'' + doc['Link'] + '\'>' + doc['Tag'] + '</a></div> ';
         });
         res.send('tagGen("<div class=\'md-chips\'>' + temp + '</div>")');
     });   
